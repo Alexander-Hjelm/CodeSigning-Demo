@@ -7,4 +7,4 @@ $dllLocation = "$env:Build_SourcesDirectory\src\bin\Debug\netcoreapp2.2\CodeSign
 Write-Host "Trying to sign following DLL - $dllLocation"
 Write-Host "PFX path - $pfxPath"
 
-& $signtoolPath sign /debug /f $pfxPath /p $env:pfxPassword /t "http://timestamp.entrust.net/TSS/RFC3161sha2TS" "$dllLocation"
+& $signtoolPath sign /debug /f $pfxPath /p $env:pfxPassword /t http://timestamp.verisign.com/scripts/timstamp.dll "$dllLocation"
