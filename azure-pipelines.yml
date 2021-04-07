@@ -21,7 +21,7 @@ steps:
     
   - powershell: |
       ./generatePfx.ps1 `
-        -pfxString $(UKHOCodeSigningCert) 
+        -pfxString $(test-certificate) 
     env:
       pfxPassword : $(password) # Set as secret variable
     displayName: Generate PFX
