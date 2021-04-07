@@ -19,13 +19,6 @@ steps:
   - powershell: dotnet build ./src
     displayName: Build Source Code
     
-  - task: AzureKeyVault@1
-    inputs:
-      azureSubscription: '$(AzureSubscription)'
-      keyVaultName: $(keyVaultName) # Set as secret variable
-      secretsFilter: $(secretsFilter) # Set as secret variable
-    displayName: Download certificate from Azure Key Vault
-    
   - powershell: |
       ./generatePfx.ps1 `
         -pfxString $(UKHOCodeSigningCert) 
