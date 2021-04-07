@@ -1,5 +1,6 @@
 variables:
-  pfxLocation : $(system.DefaultWorkingDirectory)/cert.pfx
+- group: keyvault-variable-group
+#  pfxLocation : $(system.DefaultWorkingDirectory)/cert.pfx
 
 pool:
   vmimage: windows-latest
@@ -8,6 +9,13 @@ workspace:
     clean: all
     
 steps:
+  - task: AzureKeyVault@1
+    inputs:
+      azureSubscription: 'Visual Studio Enterprise Subscription – MPN (90964ca6-bc75-4398-9fa2-75c890c373cf)'
+      KeyVaultName: 'certs-keyvault-test'
+      SecretsFilter: '*'
+      RunAsPreJob: true
+
   - powershell: dotnet build ./src
     displayName: Build Source Code
     
