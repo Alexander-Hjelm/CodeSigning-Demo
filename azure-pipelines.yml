@@ -21,7 +21,7 @@ steps:
     
   - powershell: |
       ./generatePfx.ps1 `
-        -pfxString $(test-certificate) 
+        -pfxString $(test-certificate-1) 
     env:
       pfxPassword : $(password) # Set as secret variable
     displayName: Generate PFX
